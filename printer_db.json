@@ -1,0 +1,34 @@
+{
+    "point1": {
+        "name": "\u0413\u0430\u0440\u0430\u0436",
+        "location": "\u041a\u043e\u0432\u043e\u0440\u043a\u0438\u043d\u0433 \u0413\u0430\u0440\u0430\u0436",
+        "admins": {
+            "bogdan": 328945905,
+            "serafim": 190355238
+        },
+        "price": 0,
+        "printer": {
+            "printer_name": "SEC84251914AE6D",
+            "paper": 146,
+            "toner": 596,
+            "connection": 1,
+            "status": 1
+        }
+    },
+    "point2": {
+        "name": "PDF",
+        "location": "\u041a\u043e\u043d\u0432\u0435\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 PDF",
+        "admins": {
+            "bogdan": 328945905,
+            "serafim": 190355238
+        },
+        "price": 0,
+        "printer": {
+            "printer_name": "Canon LBP6030/6040/6018L",
+            "paper": 500,
+            "toner": 500,
+            "connection": 1,
+            "status": 0
+        }
+    }
+}
