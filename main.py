@@ -7,7 +7,6 @@ import win32api
 import win32print
 from PyPDF2 import PdfReader
 from docx2pdf import convert
-# from pyqiwip2p import QiwiP2P
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from vk_api.keyboard import VkKeyboard
 from vk_api.longpoll import VkLongPoll, VkEventType
@@ -328,8 +327,6 @@ while True:
 
                     for i in range(attachmentsLen):
                         if items["items"][0]["attachments"][i]["type"] == 'photo':
-                            # attachList.append(items["items"][0]["attachments"][i]["photo"]["sizes"][4]["url"])
-                            # attributes.append(i)
                             send_message(event.user_id, 'Я пока не умею печатать фото(')
                         elif items["items"][0]["attachments"][i]["type"] == 'doc' and user_data[str(event.user_id)][
                             'stage'] == 1:
@@ -349,15 +346,10 @@ while True:
                         print(value)
                         print(i)
                         path = main_folder + str(event.user_id) + '/'
-                        # if items["items"][0]["attachments"][i]['type'] == 'photo':
-                        #    fullfilename = os.path.join(path, str(randint(0, 999999)) + ".jpg")
-                        #    urllib.request.urlretrieve(value, fullfilename)
                         if items["items"][0]["attachments"][i]['type'] == 'doc':
                             ext = str(items["items"][0]["attachments"][i]["doc"]["ext"])
                             fullfilename = os.path.join(path, str(randint(0, 999999)) + '.' + ext)
                             urllib.request.urlretrieve(value, fullfilename)
-                    # if attachmentsLen == 0:
-                    #    open('C:/Users/bogdan/Desktop/printer/' + str(event.user_id) + '/' + str(randint(0,999999)) + '.doc', "w").write(event.text)
                     return attributes
 
 
@@ -554,7 +546,6 @@ while True:
                 """ 5 этап. Сохранение файлов в paid """
                 if (user_data[str(event.user_id)]['stage'] == 4) and user_data[str(event.user_id)]['status_pay']:
 
-                    # status = p2p.check(bill).status
                     user_data[str(event.user_id)]['pay_link'] = str()  # Сброс платежной ссылки
 
                     if os.path.exists(paid_folder + str(event.user_id)):
@@ -626,10 +617,12 @@ while True:
                         send_message(user_data[str(event.user_id)]['admins'][0],
                                      f'Клиент распечтал. Осталось: {paper} бумаги и {toner} тонера.')
 
+
                         # Доп. поток для отсчета времени для удаления файлов
                         t = Timer(user_data[str(event.user_id)]['paper'] * 5, remove_paid,
                                   args=(str(user_data[str(event.user_id)]['user_id']),))
                         t.start()
+
 
                         # Сброс данных юзера
                         user_data.update({str(event.user_id): {'user_id': event.user_id, 'stage': 1,
